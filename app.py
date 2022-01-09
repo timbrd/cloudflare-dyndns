@@ -2,6 +2,7 @@ import os
 import CloudFlare
 import waitress
 import flask
+import requests
 
 
 app = flask.Flask(__name__)
@@ -12,8 +13,8 @@ def main():
     token = flask.request.args.get('token')
     zone = flask.request.args.get('zone')
     record = flask.request.args.get('record')
-    ipv4 = flask.request.args.get('ipv4')
-    ipv6 = flask.request.args.get('ipv6')
+    ipv4 = requests.get('https://api4.ipify.org').content.decode('utf8')
+    ipv6 = None
     cf = CloudFlare.CloudFlare(token=token)
 
     if not token:
