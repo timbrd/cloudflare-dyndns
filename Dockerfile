@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.10.8-alpine3.16
 
 WORKDIR /usr/src/app
 
@@ -10,3 +10,4 @@ COPY app.py ./
 CMD [ "python", "./app.py" ]
 
 EXPOSE 80
+
